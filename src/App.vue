@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"></ul>
           <form class="d-flex">
-            <ul class="navbar-nav me-auto my-3 navbar-nav-scroll">
+            <ul class="navbar-nav me-auto my-2 navbar-nav-scroll">
             <li class="nav-item">
               <router-link class="nav-link active" to="/customers"><img class="icon"  src="./assets/icones/man.png" alt="customer">Customers</router-link>
             </li>

@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5" class="text-center bg-light">No data</td>
+                        <td colspan="6" class="text-center bg-light">No data</td>
                     </tr>
                     <tr>
 
