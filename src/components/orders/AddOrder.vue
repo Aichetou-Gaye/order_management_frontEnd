@@ -65,6 +65,9 @@
 </template>
 
 <script setup>
+import { useOrderStore } from '@store'
+const store = useOrderStore()
+
 </script>
 
 <style scoped></style>
