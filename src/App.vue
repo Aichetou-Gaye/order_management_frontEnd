@@ -2,7 +2,7 @@
   <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <router-link to="/"><img class="logo" src="./assets/images/logo.png" alt="logo"></router-link>
+        <router-link to="/"><img class="logo" src="./assets/images/lg.png" alt="logo"></router-link>
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"></ul>
           <form class="d-flex">
@@ -38,6 +38,6 @@
   margin-right: 4px;
 }
 .logo {
-  width: 250px;
+  width: 200px;
 }
 </style>
