@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h3 class="my-3">List of Orders</h3>
-        <div class="d-flex justify-content-end mb-3"><router-link to="/order/new" class="btn btn-primary ">Add New
+        <div class="d-flex justify-content-end mb-3"><router-link to="/order/new" class="btn btn-primary" >Add New
                 Order</router-link></div>
         <div class="contact-list-table">
             <table class="table table-hover table-bordered">
@@ -27,8 +27,8 @@
                         <td> {{ item.status }}</td>
                         <td class="text-center">
                             <button class="btn text-info" @click="store.show(item.id), route.push('/order/show/' + item.id)"><i class="fa-solid fa-eye"></i></button>
-                            <button class="btn text-warning"
-                            @click="store.edit(item.id), route.push('/order/edit/' + item.id)"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <router-link class="btn text-warning"
+                            :to="`/order/edit/${item.id}`"><i class="fa-solid fa-pen-to-square"></i></router-link>
                             <button class="btn text-danger" @click="del(item.id)"><i
                                     class="fa-solid fa-trash-can"></i></button>
                         </td>

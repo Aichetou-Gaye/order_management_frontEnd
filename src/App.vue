@@ -5,19 +5,19 @@
         <router-link to="/"><img class="logo" src="./assets/images/lg.png" alt="logo"></router-link>
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"></ul>
-          <form class="d-flex">
+          <nav class="d-flex">
             <ul class="navbar-nav me-auto my-2 navbar-nav-scroll">
             <li class="nav-item">
-              <router-link class="nav-link active" to="/customers"><img class="icon"  src="./assets/icones/man.png" alt="customer">Customers</router-link>
+              <router-link class="nav-link" to="/customers"><img class="icon"  src="./assets/icones/customer.png" alt="customer">Customers</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/products" class="nav-link active"><img class="icon"  src="./assets/icones/box(3).png" alt="product">Products</router-link>
+              <router-link to="/products" class="nav-link"><img class="icon"  src="./assets/icones/product.png" alt="product">Products</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/orders" class="nav-link active"><img class="icon"  src="./assets/icones/grocery-cart.png" alt="order">Orders</router-link>
+              <router-link to="/orders" class="nav-link"><img class="icon"  src="./assets/icones/order.png" alt="order">Orders</router-link>
             </li>
           </ul>
-          </form>
+          </nav>
         </div>
       </div>
     </nav>

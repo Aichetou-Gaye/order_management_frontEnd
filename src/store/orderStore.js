@@ -29,6 +29,16 @@ export const useOrderStore = defineStore("orderStore",{
                 status: "Processing"
             },
         ],
+        details: [{
+            product:"",
+            quantity:1,
+            price:0
+        }],
+        detailForm: reactive({
+            product: null,
+            quantity: null,
+            price: null
+        }),
         orderForm: reactive({
             date: null,
             customer_name: null,
@@ -46,6 +56,11 @@ export const useOrderStore = defineStore("orderStore",{
             this.orderForm.track_number = null,
             this.orderForm.status = null
         },
+        // resetDetail() { 
+        //     this.detailForm.product = null,
+        //     this.detailForm.quantity = null,
+        //     this.detailForm.price = null
+        // },
         add() {
             const maxId = this.orders > 0 ? Math.max(...this.orders.map(c => c.id)) : 0
 
@@ -63,13 +78,32 @@ export const useOrderStore = defineStore("orderStore",{
         edit(id, newOrder) {
             const index = this.orders.findIndex(c => c.id == id)
             this.orders[index] = {
+                id: Number(id),
                 ...newOrder
             }
         },
         show(id) {
             const index = this.orders.findIndex(c => c.id == id)
             this.currentOrder = this.orders[index]
-        }
+            console.log(this.currentOrder)
+        },
+        addDetail() {
+            const detail = {
+                ...this.detailForm,
+            }
+            this.details.push(detail)
+            console.log("detail",this.details)
+        },
+        dropDetail(detail) {
+            const index = this.details.indexOf(detail)
+            console.log("detail index", index)
+            if(this.details.length > 1) {
+                this.details = this.details.splice(index, 1)
+                console.log("detail add", this.details)
+            }else {
+                alert("At least one item must be present.")
+            }
+        },
     }
 
 })
