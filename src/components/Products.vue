@@ -167,7 +167,7 @@
             </div>
 
             <!-- Modal de details -->
-            <div v-if="isVisible" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -180,38 +180,38 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <p class="form-label">Product Name</p>
-                                    <p class="form-control bg-light"> {{ current.name }}</p>
+                                    <p class="form-control bg-light"> {{ current?.name }}</p>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="form-label">Category</p>
-                                    <p class="form-control bg-light">{{ current.category }}</p>
+                                    <p class="form-control bg-light">{{ current?.category }}</p>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <p class="form-label">Price</p>
-                                    <p class="form-control bg-light">{{ current.price }}</p>
+                                    <p class="form-control bg-light">{{ current?.price }}</p>
                                 </div>
 
                                 <div class="col-md-6">
                                     <p class="form-label">Stock</p>
-                                    <p class="form-control bg-light">{{ current.stock }}</p>
+                                    <p class="form-control bg-light">{{ current?.stock }}</p>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <p class="form-label">Barcode</p>
-                                    <p class="form-control bg-light">{{ current.barcode }}</p>
+                                    <p class="form-control bg-light">{{ current?.barcode }}</p>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="form-label">Status</p>
-                                    <p class="form-control bg-light">{{ current.status }}</p>
+                                    <p class="form-control bg-light">{{ current?.status }}</p>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-12">
                                     <p class="form-label">Description</p>
-                                    <p class="form-control bg-light">{{ current.description }}</p>
+                                    <p class="form-control bg-light">{{ current?.description }}</p>
                                 </div>
                             </div>
                         </div>
@@ -236,6 +236,8 @@ const product = store.productForm
 const submitForm = () => {
     store.add()
 }
+
+// Edit function
 const object = reactive({ 
     name: ref(""),
     description: ref(""), 
@@ -244,27 +246,25 @@ const object = reactive({
     category: ref(""), 
     barcode: ref(""), 
     status: ref("") })
-// Edit function
 const editForm = () => {
     store.edit(object)
 }
 
 // Show function
-const isVisible = ref(false)
 const current = ref(null)
 const view = (item) => {
-    isVisible.value = true
     current.value = item
 }
 
 // Delete function
 const del = (id) => {
-    confirm("Are you sure you want to delete this product?")
-    if (confirm) {
+    const choice = window.confirm("Are you sure you want to delete this product?")
+    if (choice) {
         store.drop(id)
     }
 
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

@@ -47,8 +47,8 @@ const store = useOrderStore()
 const route = useRouter()
 
 const del = (id) => {
-    confirm("Are you sure you want to delete this order?")
-    if (confirm) {
+    const choice = window.confirm("Are you sure you want to delete this order?")
+    if (choice) {
         store.drop(id)
     }
 }

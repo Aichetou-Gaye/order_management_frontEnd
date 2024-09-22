@@ -56,7 +56,7 @@ export const useProductStore = defineStore("productStore",{
             this.productForm.status = null
         },
         add() {
-            const maxId = this.products > 0 ? Math.max(...this.products.map(c => c.id)) : 0
+            const maxId = this.products.length > 0 ? Math.max(...this.products.map(c => c.id)) : 0
 
             const newId = maxId + 1
             const product = {

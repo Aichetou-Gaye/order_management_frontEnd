@@ -28,7 +28,7 @@
                         <td class="text-center">
                             <button class="btn text-info" data-bs-toggle="modal" data-bs-target="#viewModal"
                                 @click="view(item)"><i class="fa-solid fa-eye"></i></button>
-                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal" @click="edit(item.id)"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button class="btn text-danger" @click="del(item.id)"><i
                                     class="fa-solid fa-trash-can"></i></button>
                         </td>
@@ -91,21 +91,21 @@
                             <form>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Customer Name</label>
-                                    <input disabled type="text" class="form-control bg-light" id="name" v-model="edit.name" required>
+                                    <input disabled type="text" class="form-control bg-light" value = {{customer.name}} id="name" v-model="editC.name" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
-                                    <textarea type="text" class="form-control" id="address" v-model="edit.address"
+                                    <textarea type="text" class="form-control" id="address" v-model="editC.address"
                                         rows="2" required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" v-model="edit.email"
+                                    <input type="email" class="form-control" id="email" v-model="editC.email"
                                         required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" class="form-control" id="phone" v-model="edit.phone"
+                                    <input type="text" class="form-control" id="phone" v-model="editC.phone"
                                         required>
                                 </div>
                             </form>
@@ -113,14 +113,14 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="editForm()">Confirm</button>
+                                @click="editForm">Confirm</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Modal de details -->
-            <div v-if="isVisible" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -132,19 +132,19 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <p for="name" class="form-label">Customer Name</p>
-                                <p class="form-control bg-light"> {{ current.name }}</p>
+                                <p class="form-control bg-light"> {{ current?.name }}</p>
                             </div>
                             <div class="mb-3">
                                 <p for="address" class="form-label">Address</p>
-                                <p class="form-control bg-light">{{ current.address }}</p>
+                                <p class="form-control bg-light">{{ current?.address }}</p>
                             </div>
                             <div class="mb-3">
                                 <p for="email" class="form-label">Email</p>
-                                <p class="form-control bg-light">{{ current.email }}</p>
+                                <p class="form-control bg-light">{{ current?.email }}</p>
                             </div>
                             <div class="mb-3">
                                 <p for="phone" class="form-label">Phone</p>
-                                <p class="form-control bg-light">{{ current.phone }}</p>
+                                <p class="form-control bg-light">{{ current?.phone }}</p>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -169,37 +169,39 @@ const submitForm = () => {
     store.add()
 }
 
-// Edit function
-const edit = reactive({
+// Edit function en cours.....
+let editC = reactive({
     name:store.customerForm.name,
     address: store.customerForm.address,
     email:store.customerForm.email,
     phone: store.customerForm.phone,
 })
 
+const edit = (id) => {
+    const get = { ...store.getCustomerById(id)}
+    console.log(get)
+}
+
 const editForm = () => {
-    store.edit(edit)
+    const id = editC.id
+    store.edit(id, editC)
 }
 
 // Show function
 const current = ref(null)
-const isVisible = ref(false)
 const view = (item) => {
-    isVisible.value = true
     current.value = item
 }
 
 // Delete function
 const del = (id) => {
-    confirm("Are you sure you want to delete this customer?")
-    if (confirm) {
+    const choice = window.confirm("Are you sure you want to delete this customer?") 
+    if (choice) {
     store.drop(id)
     }
 }
 </script>
 
 <style scoped>
-i {
-    width: 100px;
-}
+
 </style>

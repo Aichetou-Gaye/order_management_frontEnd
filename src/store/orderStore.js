@@ -62,7 +62,7 @@ export const useOrderStore = defineStore("orderStore",{
         //     this.detailForm.price = null
         // },
         add() {
-            const maxId = this.orders > 0 ? Math.max(...this.orders.map(c => c.id)) : 0
+            const maxId = this.orders.length > 0 ? Math.max(...this.orders.map(c => c.id)) : 0
 
             const newId = maxId + 1
             const order = {
