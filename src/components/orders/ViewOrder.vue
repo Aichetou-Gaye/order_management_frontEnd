@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            <h4 class="text-danger fw-bold text-center my-3 mb-4">View Order</h4>
+            <h4 class="text-danger fw-bold my-3 mb-4">Order Informations</h4>
             <div class="row">
                 <div class="col-md-6">
                     <p class="form-control bg-light">{{ store.currentOrder.date }}</p>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div>
-            <h5 class="text-danger fw-bold text-center my-3 mb-4">Order Details</h5>
+            <h5 class="text-danger fw-bold my-3 mb-4">Details of the Order</h5>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -25,10 +25,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item, index) in store.details" :key="index">
-                        <td>{{ item.product }} </td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.price }}</td>
+                    <tr>
+                        <td>Product 001</td>
+                        <td>100</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Product 002</td>
+                        <td>200</td>
+                        <td>20</td>
                     </tr>
                 </tbody>
             </table>

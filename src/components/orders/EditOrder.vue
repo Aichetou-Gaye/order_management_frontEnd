@@ -1,7 +1,8 @@
 <template>
     <div class="container">
+        <h3 class="fw-bold text-primary my-2">Edit The Order</h3>
         <div class="d-flex justify-content-end my-3">
-            <router-link to="/orders" class="btn btn-secondary me-4">Orders List</router-link>
+            <router-link to="/order" class="btn btn-secondary me-4">Orders List</router-link>
             <button class="btn btn-primary" @click="onEdit()">Edit</button>
         </div>
         <div>
@@ -83,19 +84,13 @@ const store = useOrderStore()
 const storeProd = useProductStore()
 const storeCust = useCustomerStore()
 
-const router = useRouter()
 const route = useRoute()
 const detail = store.detailForm
 
 const id = route.params.id
 
-const order = reactive({
-    date: store.orderForm.date,
-    customer_name: store.orderForm.customer_name,
-    delivery_address: store.orderForm.delivery_address,
-    track_number: store.orderForm.track_number,
-    status: store.orderForm.status
-})
+const getOrder = store.getOrderById(id)
+const order = getOrder
 
 const onEdit = () => {
     if (order.date && order.customer_name && order.delivery_address && order.track_number && order.status) {

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h3 class="my-3">List of Orders</h3>
-        <div class="d-flex justify-content-end mb-3"><router-link to="/order/new" class="btn btn-primary" >Add New
+        <div class="d-flex justify-content-end mb-3"><router-link to="/order/new" activeClass="active" class="btn btn-primary" >Add New
                 Order</router-link></div>
         <div class="contact-list-table">
             <table class="table table-hover table-bordered">

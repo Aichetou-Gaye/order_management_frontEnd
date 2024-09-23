@@ -1,7 +1,8 @@
 <template>
     <div class="container">
+        <h3 class="fw-bold text-primary my-2">Add New Order</h3>
         <div class="d-flex justify-content-end my-3">
-            <router-link to="/orders" class="btn btn-secondary me-4">Orders List</router-link>
+            <router-link to="/order" class="btn btn-secondary me-4">Orders List</router-link>
             <button class="btn btn-primary" @click="onSubmit()">Submit</button>
         </div>
         <div>
