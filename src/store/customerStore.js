@@ -40,6 +40,10 @@ export const useCustomerStore = defineStore("customerStore", {
       this.customerForm.email = null;
       this.customerForm.phone = null;
     },
+    getById(id) {
+      const result = this.customers.find((r) => r.id == id);
+      return result.id;
+    },
     getCustomerById(id) {
       const result = this.customers.find((r) => r.id == id);
       return result;
@@ -63,6 +67,7 @@ export const useCustomerStore = defineStore("customerStore", {
     edit(id, newCustomer) {
       const index = this.customers.findIndex((f) => f.id == id);
       this.customers[index] = { id: Number(id), ...newCustomer };
+      this.resetForm();
     },
   },
 });

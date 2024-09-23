@@ -13,39 +13,32 @@ import ViewOrder from "../components/orders/ViewOrder.vue";
 const routes = [
   {
     path: "/",
-    name: "home",
     component: Home,
   },
   {
-    path: "/customers",
-    name: "customers",
+    path: "/customer",
     component: Customers,
   },
   {
-    path: "/products",
-    name: "products",
+    path: "/product",
     component: Products,
   },
   {
-    path: "/orders",
-    name: "orders",
+    path: "/order",
     component: Orders,
   },
   {
     path: "/order/new",
-    name: "add-order",
     component: AddOrder,
   },
   {
     path: "/order/edit/:id",
-    name: "edit-order",
     component: EditOrder,
   },
   {
     path: "/order/show/:id",
-    name: "show-order",
     component: ViewOrder,
-  }
+  },
 ];
 
 const router = createRouter({
