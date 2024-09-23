@@ -34,8 +34,8 @@
                         <td class="text-center">
                             <button class="btn text-info" data-bs-toggle="modal" data-bs-target="#viewModal"
                                 @click="view(item)"><i class="fa-solid fa-eye"></i></button>
-                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal"><i
-                                    class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal"
+                                @click="edit(item.id)"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button class="btn text-danger" @click="del(item.id)"><i class="fa-solid fa-trash-can"></i>
                             </button>
                         </td>
@@ -81,7 +81,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="barcode" class="form-label">Barcode</label>
-                                        <input type="text" class="form-control" id="barcode" v-model="product.barcode"
+                                        <input type="number" class="form-control" id="barcode" v-model="product.barcode"
                                             required>
                                     </div>
                                     <div class="col-md-6">
@@ -121,54 +121,58 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Product Name</label>
-                                        <input type="text" class="form-control" id="name" v-model="object.name" required>
+                                        <input type="text" class="form-control" id="name" v-model="editP.name" disabled>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="category" class="form-label">Category</label>
-                                        <input type="text" class="form-control" id="category" v-model="object.category"
+                                        <input type="text" class="form-control" id="category" v-model="editP.category"
                                             required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="price" class="form-label">Price</label>
-                                        <input type="number" class="form-control" id="price" v-model="object.price" required>
+                                        <input type="number" class="form-control" id="price" v-model="editP.price"
+                                            required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="stock" class="form-label">Stock</label>
-                                        <input type="number" class="form-control" id="stock" v-model="object.stock" required>
+                                        <input type="number" class="form-control" id="stock" v-model="editP.stock"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="barcode" class="form-label">Barcode</label>
-                                        <input type="text" class="form-control" id="barcode" v-model="object.barcode" required>
+                                        <input type="number" class="form-control" id="barcode" v-model="editP.barcode"
+                                            required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="status" class="form-label">Status</label>
-                                        <input type="text" class="form-control" id="status" v-model="object.status" required>
+                                        <input type="text" class="form-control" id="status" v-model="editP.status"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                         <label for="description" class="form-label">Description</label>
-                                        <input type="text" class="form-control" id="description" v-model="object.description"
-                                            rows="2" required>
+                                        <input type="text" class="form-control" id="description"
+                                            v-model="editP.description" rows="2" required>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="editForm()">Confirm</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                @click="editForm()">Confirm</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Modal de details -->
-            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -238,16 +242,15 @@ const submitForm = () => {
 }
 
 // Edit function
-const object = reactive({ 
-    name: ref(""),
-    description: ref(""), 
-    price: ref(""), 
-    stock: ref(""), 
-    category: ref(""), 
-    barcode: ref(""), 
-    status: ref("") })
+let editP = reactive({})
+let get = 0
+
+const edit = (id) => {
+    editP = store.getProductById(id)
+    get = store.getById(id)
+}
 const editForm = () => {
-    store.edit(object)
+    store.edit(get, editP)
 }
 
 // Show function
@@ -266,5 +269,4 @@ const del = (id) => {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

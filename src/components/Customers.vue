@@ -28,7 +28,8 @@
                         <td class="text-center">
                             <button class="btn text-info" data-bs-toggle="modal" data-bs-target="#viewModal"
                                 @click="view(item)"><i class="fa-solid fa-eye"></i></button>
-                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal" @click="edit(item.id)"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn text-warning" data-bs-toggle="modal" data-bs-target="#editModal"
+                                @click="edit(item.id)"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button class="btn text-danger" @click="del(item.id)"><i
                                     class="fa-solid fa-trash-can"></i></button>
                         </td>
@@ -37,8 +38,7 @@
             </table>
 
             <!-- Modal D'ajout -->
-            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -79,8 +79,7 @@
             </div>
 
             <!-- Modal De modification -->
-            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -91,7 +90,8 @@
                             <form>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Customer Name</label>
-                                    <input disabled type="text" class="form-control bg-light" value = {{customer.name}} id="name" v-model="editC.name" required>
+                                    <input type="text" class="form-control bg-light"
+                                        id="name" v-model="editC.name" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
@@ -100,13 +100,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" v-model="editC.email"
-                                        required>
+                                    <input type="email" class="form-control" id="email" v-model="editC.email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" class="form-control" id="phone" v-model="editC.phone"
-                                        required>
+                                    <input type="text" class="form-control" id="phone" v-model="editC.phone" required>
                                 </div>
                             </form>
                         </div>
@@ -120,8 +118,7 @@
             </div>
 
             <!-- Modal de details -->
-            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -170,21 +167,22 @@ const submitForm = () => {
 }
 
 // Edit function en cours.....
-let editC = reactive({
-    name:store.customerForm.name,
-    address: store.customerForm.address,
-    email:store.customerForm.email,
-    phone: store.customerForm.phone,
-})
+// let editC = reactive({
+//     name: store.customerForm.name,
+//     address: store.customerForm.address,
+//     email: store.customerForm.email,
+//     phone: store.customerForm.phone,
+// })
+let editC = reactive({})
+let get = 0
 
 const edit = (id) => {
-    const get = { ...store.getCustomerById(id)}
-    console.log(get)
+    editC = store.getCustomerById(id)
+    get = store.getById(id)
 }
 
 const editForm = () => {
-    const id = editC.id
-    store.edit(id, editC)
+    store.edit(get, editC)
 }
 
 // Show function
@@ -195,13 +193,11 @@ const view = (item) => {
 
 // Delete function
 const del = (id) => {
-    const choice = window.confirm("Are you sure you want to delete this customer?") 
+    const choice = window.confirm("Are you sure you want to delete this customer?")
     if (choice) {
-    store.drop(id)
+        store.drop(id)
     }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
