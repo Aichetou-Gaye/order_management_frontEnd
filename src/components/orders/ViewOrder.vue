@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div>
-            <h4 class="text-danger fw-bold my-3 mb-4">Order Informations</h4>
+            <div class="d-flex justify-content-between my-3 mb-4">
+                <h4 class="text-danger fw-bold">Order Informations</h4>
+                <router-link to="/order" class="btn btn-danger">Orders List</router-link>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <p class="form-control bg-light">{{ store.currentOrder.date }}</p>

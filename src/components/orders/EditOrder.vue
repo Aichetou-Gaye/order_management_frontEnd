@@ -3,7 +3,7 @@
         <h3 class="fw-bold text-danger-emphasis my-2">Edit The Order</h3>
         <div class="d-flex justify-content-end my-3">
             <router-link to="/order" class="btn btn-outline-secondary me-4 fw-medium">Orders List</router-link>
-            <button class="btn btn-danger" @click="onEdit()">Edit</button>
+            <button class="btn btn-danger" @click="onEdit()">Save</button>
         </div>
         <div>
             <form class="row g-3">
