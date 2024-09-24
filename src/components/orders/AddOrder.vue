@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <h3 class="fw-bold text-primary my-2">Add New Order</h3>
+        <h3 class="fw-bold text-danger-emphasis my-2">Add New Order</h3>
         <div class="d-flex justify-content-end my-3">
-            <router-link to="/order" class="btn btn-secondary me-4">Orders List</router-link>
-            <button class="btn btn-primary" @click="onSubmit()">Submit</button>
+            <router-link to="/order" class="btn btn-outline-secondary me-4 fw-medium">Orders List</router-link>
+            <button class="btn btn-danger" @click="onSubmit()">Submit</button>
         </div>
         <div>
             <form class="row g-3">
@@ -64,13 +64,13 @@
                     <td>
                         <input type="number" class="form-control" min="0" value="0" v-model="detail.price" required>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <button class="btn btn-danger" @click="dropDetail(item)">Remove</button>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="4"><button class="btn btn-success" @click="addDetail()">Add New Detail</button>
+                    <td colspan="4"><button class="btn btn-drop" @click="addDetail()">Add New Detail</button>
                     </td>
                 </tr>
             </tbody>
@@ -103,4 +103,14 @@ const onSubmit = () => {
 }
 </script>
 
-<style scoped></style>
+<style>
+.btn-drop {
+    background-color: rgb(133, 74, 3);
+    color: white;
+}
+
+.btn-drop:focus {
+    color: blue;
+}
+
+</style>
